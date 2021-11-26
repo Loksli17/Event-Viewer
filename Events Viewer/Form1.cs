@@ -22,10 +22,10 @@ namespace Events_Viewer
         public static int globalEventIndex = 0;
 
         private List<string> eventJournalNames = new List<string> {
-                                                            "System",
-                                                            "Application",
-                                                            "Security"
-                                                        };
+            "System",
+            "Application",
+            "Security"
+        };
 
         public Form1()
         {
@@ -87,15 +87,8 @@ namespace Events_Viewer
             // hope this works
             globalEventIndex = eventIndex;
             EventView evtView = new EventView();
-            evtView.Show();
-
-            //MessageBox.Show(
-            //    this.eventsView.Rows[rowInd].Cells[0].Value.ToString(), 
-            //    "AAAAAA", 
-            //    MessageBoxButtons.YesNo, 
-            //    MessageBoxIcon.Information, 
-            //    MessageBoxDefaultButton.Button1, 
-            //    MessageBoxOptions.DefaultDesktopOnly);
+            evtView.ShowDialog(this);
+            evtView.Dispose();
         }
 
         private void refreshRows()
@@ -113,6 +106,15 @@ namespace Events_Viewer
         {           
             eventAdapter.setLogType(eventJournalNames[EventJournalName.SelectedIndex]);
             refreshRows();
+        }
+
+        private void newEventBtn_Click(object sender, EventArgs e)
+        {
+            EventCreate evtCreate = new EventCreate();
+            evtCreate.ShowDialog(this);
+            evtCreate.Dispose();
+
+            // ! update event list here
         }
     }
 }
