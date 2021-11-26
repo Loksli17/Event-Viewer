@@ -16,6 +16,11 @@ namespace Events_Viewer
             this.eventLog.Log = "System";
         }
 
+        public EventAdapter(string type)
+        {
+            eventLog.Log = type;
+        }
+
         public EventLogEntryCollection getEvents()
         {
             return this.eventLog.Entries;
@@ -24,6 +29,11 @@ namespace Events_Viewer
         public int getCount()
         {
             return this.eventLog.Entries.Count;
+        }
+
+        public void setLogType(string type)
+        {
+            eventLog.Log = type;
         }
     }
 }

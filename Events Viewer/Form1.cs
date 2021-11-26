@@ -21,12 +21,19 @@ namespace Events_Viewer
         private EventAdapter eventAdapter = new EventAdapter();
         public static int globalEventIndex = 0;
 
+        private List<string> eventJournalNames = new List<string> {
+                                                            "System",
+                                                            "Application",
+                                                            "Security"
+                                                        };
+
         public Form1()
         {
             InitializeComponent();
 
             this.initColumns();
             this.initRows();
+            initDropDown();
             this.eventsCount.Text = Convert.ToString(eventAdapter.getCount());
         }
 
@@ -54,13 +61,17 @@ namespace Events_Viewer
 
             EventLogEntryCollection events = this.eventAdapter.getEvents();
 
-            Button btn = new Button();
-
-            Console.WriteLine("click");
-
             for (int i = this.eventAdapter.getCount() - 1; i > this.eventAdapter.getCount() - 2000; i--) {
                 this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].TimeGenerated, events[i].EntryType);
             }
+        }
+
+        private void initDropDown()
+        {
+            var bindingSource = new BindingSource();
+            bindingSource.DataSource = eventJournalNames;
+
+            EventJournalName.DataSource = bindingSource;
         }
 
         private void eventsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -85,6 +96,23 @@ namespace Events_Viewer
             //    MessageBoxIcon.Information, 
             //    MessageBoxDefaultButton.Button1, 
             //    MessageBoxOptions.DefaultDesktopOnly);
+        }
+
+        private void refreshRows()
+        {
+            eventsView.Rows.Clear();
+            EventLogEntryCollection events = this.eventAdapter.getEvents();
+
+            for (int i = this.eventAdapter.getCount() - 1; i > this.eventAdapter.getCount() - 2000; i--)
+            {
+                this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].TimeGenerated, events[i].EntryType);
+            }
+        }
+
+        private void EventJournalName_SelectedIndexChanged(object sender, EventArgs e)
+        {           
+            eventAdapter.setLogType(eventJournalNames[EventJournalName.SelectedIndex]);
+            refreshRows();
         }
     }
 }

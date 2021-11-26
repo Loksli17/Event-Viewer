@@ -34,6 +34,7 @@ namespace Events_Viewer
             this.label2 = new System.Windows.Forms.Label();
             this.eventsView = new System.Windows.Forms.DataGridView();
             this.view = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EventJournalName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.eventsView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,11 +82,21 @@ namespace Events_Viewer
             this.view.HeaderText = "View";
             this.view.Name = "view";
             // 
+            // EventJournalName
+            // 
+            this.EventJournalName.FormattingEnabled = true;
+            this.EventJournalName.Location = new System.Drawing.Point(907, 70);
+            this.EventJournalName.Name = "EventJournalName";
+            this.EventJournalName.Size = new System.Drawing.Size(121, 23);
+            this.EventJournalName.TabIndex = 5;
+            this.EventJournalName.SelectedIndexChanged += new System.EventHandler(this.EventJournalName_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 605);
+            this.ClientSize = new System.Drawing.Size(1207, 605);
+            this.Controls.Add(this.EventJournalName);
             this.Controls.Add(this.eventsView);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.eventsCount);
@@ -105,6 +116,7 @@ namespace Events_Viewer
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView eventsView;
         private System.Windows.Forms.DataGridViewButtonColumn view;
+        private System.Windows.Forms.ComboBox EventJournalName;
     }
 }
 
