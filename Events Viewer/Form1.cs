@@ -18,9 +18,10 @@ namespace Events_Viewer
 
         private EventAdapter eventAdapter = new EventAdapter();
         public static int globalEventIndex = 0;
-        private int page = 12;
-        private int take = 2000;
-        private int skip = 0;
+        private int page                   = 1;
+        private int take                   = 1000;
+        private int skip                   = 0;
+        private bool firstRefresh          = false;
 
         private List<string> eventJournalNames = new List<string> {
             "System",
@@ -34,7 +35,6 @@ namespace Events_Viewer
             this.countSkip();
 
             this.initColumns();
-            this.initRows();
             initDropDown();
             this.eventsCount.Text = Convert.ToString(eventAdapter.getCount());
         }
@@ -73,13 +73,6 @@ namespace Events_Viewer
             }
         }
 
-
-        private void initRows() {
-
-            EventLogEntryCollection events = this.eventAdapter.getEvents();
-            this.pushRowsInGridView(events);
-        }
-
         private void initDropDown()
         {
             var bindingSource = new BindingSource();
@@ -107,8 +100,13 @@ namespace Events_Viewer
 
         private void refreshRows()
         {
-            this.page = 1;
-            this.countSkip();
+            if(!this.firstRefresh)
+            {
+                this.page = 1;
+                this.countSkip();
+                this.firstRefresh = true;
+            }
+
             eventsView.Rows.Clear();
             EventLogEntryCollection events = this.eventAdapter.getEvents();
             this.pushRowsInGridView(events);
