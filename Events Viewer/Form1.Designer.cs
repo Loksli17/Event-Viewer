@@ -85,7 +85,9 @@ namespace Events_Viewer
             // 
             // EventJournalName
             // 
+            this.EventJournalName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EventJournalName.FormattingEnabled = true;
+            this.EventJournalName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.EventJournalName.Location = new System.Drawing.Point(907, 70);
             this.EventJournalName.Name = "EventJournalName";
             this.EventJournalName.Size = new System.Drawing.Size(121, 23);
