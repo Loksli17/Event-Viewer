@@ -35,5 +35,10 @@ namespace Events_Viewer
         {
             eventLog.Log = type;
         }
+
+        public void addEventLogEntry(string source, string message, EventLogEntryType type)
+        {
+            EventLog.WriteEntry(source, message, type);
+        }
     }
 }
