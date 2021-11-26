@@ -10,9 +10,15 @@ namespace Events_Viewer
 {
     public partial class EventView : Form
     {
+
+        private EventAdapter eventAdapter = new EventAdapter();
+
         public EventView()
         {
             InitializeComponent();
+
+            this.Message.Text = this.eventAdapter.getEvents()[Form1.globalEventIndex].Message;
         }
+
     }
 }
