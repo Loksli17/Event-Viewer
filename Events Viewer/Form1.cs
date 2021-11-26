@@ -10,27 +10,6 @@ using System.Windows.Forms;
 using System.Diagnostics;
 
 
-public class EventAdapter
-{
-
-    private EventLog eventLog = new EventLog();
-
-    public EventAdapter()
-    {
-        this.eventLog.Log = "System";
-    }
-
-    public EventLogEntryCollection getEvents()
-    {
-        return this.eventLog.Entries;
-    }
-
-    public int getCount()
-    {
-        return this.eventLog.Entries.Count;
-    }
-}
-
 
 namespace Events_Viewer
 {
