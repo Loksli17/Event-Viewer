@@ -29,13 +29,38 @@ namespace Events_Viewer
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.eventsCount = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // eventsCount
+            // 
+            this.eventsCount.AutoSize = true;
+            this.eventsCount.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.eventsCount.Location = new System.Drawing.Point(705, 28);
+            this.eventsCount.Name = "eventsCount";
+            this.eventsCount.Size = new System.Drawing.Size(71, 30);
+            this.eventsCount.TabIndex = 1;
+            this.eventsCount.Text = "label2";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.eventsCount);
+            this.Controls.Add(this.label1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label eventsCount;
     }
 }
 
