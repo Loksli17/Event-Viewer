@@ -15,21 +15,23 @@ namespace Events_Viewer
 {
     public partial class Form1 : Form
     {
-        // ага
-        // 
-        // if .
+
         private EventAdapter eventAdapter = new EventAdapter();
         public static int globalEventIndex = 0;
+        private int page = 12;
+        private int take = 2000;
+        private int skip = 0;
 
         private List<string> eventJournalNames = new List<string> {
-                                                            "System",
-                                                            "Application",
-                                                            "Security"
-                                                        };
+            "System",
+            "Application",
+            "Security",
+        };
 
         public Form1()
         {
             InitializeComponent();
+            this.countSkip();
 
             this.initColumns();
             this.initRows();
@@ -57,13 +59,25 @@ namespace Events_Viewer
         }
 
 
+        private void countSkip(){
+            this.skip = (this.page - 1) * this.take;
+        }
+
+        private void pushRowsInGridView(EventLogEntryCollection events) {
+
+            int start = this.eventAdapter.getCount() - 1 - this.skip;
+            int end   = this.eventAdapter.getCount() - 1 - this.take - this.skip;
+
+            for (int i = start; i > end; i--){
+                this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].TimeGenerated, events[i].EntryType);
+            }
+        }
+
+
         private void initRows() {
 
             EventLogEntryCollection events = this.eventAdapter.getEvents();
-
-            for (int i = this.eventAdapter.getCount() - 1; i > this.eventAdapter.getCount() - 2000; i--) {
-                this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].TimeGenerated, events[i].EntryType);
-            }
+            this.pushRowsInGridView(events);
         }
 
         private void initDropDown()
@@ -100,13 +114,12 @@ namespace Events_Viewer
 
         private void refreshRows()
         {
+            this.page = 1;
+            this.countSkip();
             eventsView.Rows.Clear();
             EventLogEntryCollection events = this.eventAdapter.getEvents();
-
-            for (int i = this.eventAdapter.getCount() - 1; i > this.eventAdapter.getCount() - 2000; i--)
-            {
-                this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].TimeGenerated, events[i].EntryType);
-            }
+            this.pushRowsInGridView(events);
+            this.eventsCount.Text = this.eventAdapter.getCount().ToString();
         }
 
         private void EventJournalName_SelectedIndexChanged(object sender, EventArgs e)
