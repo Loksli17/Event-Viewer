@@ -151,6 +151,7 @@ namespace Events_Viewer
             evtCreate.ShowDialog(this);
             evtCreate.Dispose();
 
+            refreshRows();
         }
 
 

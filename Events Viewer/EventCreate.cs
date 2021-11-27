@@ -47,5 +47,6 @@ namespace Events_Viewer
             MessageBox.Show($"New with source: {source} was created! =)");
 
         }
+
     }
 }

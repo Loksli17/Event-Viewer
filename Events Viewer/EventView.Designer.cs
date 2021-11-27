@@ -274,7 +274,6 @@
         private System.Windows.Forms.Label Source;
         private System.Windows.Forms.Label GeneratedTime;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.RichTextBox Message;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
