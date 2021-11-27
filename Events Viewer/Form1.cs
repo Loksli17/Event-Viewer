@@ -141,6 +141,7 @@ namespace Events_Viewer
             this.countSkip();
             this.refreshMaxPage();
             refreshRows();
+            this.PrevBtn.Enabled = false;
         }
 
 
@@ -156,7 +157,11 @@ namespace Events_Viewer
         private void PrevBtn_Click(object sender, EventArgs e)
         {
             if (this.page == 1) return;
+            
             this.page--;
+            if (this.page < this.lastPage) this.NextBtn.Enabled = true;
+            if (this.page == 1) this.PrevBtn.Enabled = false;
+
             this.PageNum.Text = this.page.ToString();
             this.countSkip();
             this.refreshRows();
@@ -166,7 +171,11 @@ namespace Events_Viewer
         private void NextBtn_Click(object sender, EventArgs e)
         {
             if (this.page == this.lastPage) return;
+
             this.page++;
+            if (this.page > 1) this.PrevBtn.Enabled = true;
+            if (this.page == this.lastPage) this.NextBtn.Enabled = false;
+
             this.PageNum.Text = this.page.ToString();
             this.countSkip();
             this.refreshRows();
@@ -179,7 +188,5 @@ namespace Events_Viewer
             this.refreshMaxPage();
             this.refreshRows();
         }
-
-
     }
 }
