@@ -56,7 +56,7 @@ namespace Events_Viewer
             // 
             this.eventsCount.AutoSize = true;
             this.eventsCount.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.eventsCount.Location = new System.Drawing.Point(779, 191);
+            this.eventsCount.Location = new System.Drawing.Point(825, 191);
             this.eventsCount.Name = "eventsCount";
             this.eventsCount.Size = new System.Drawing.Size(59, 25);
             this.eventsCount.TabIndex = 1;
@@ -66,11 +66,11 @@ namespace Events_Viewer
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(651, 191);
+            this.label2.Location = new System.Drawing.Point(624, 191);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 25);
+            this.label2.Size = new System.Drawing.Size(203, 25);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Event\'s amout: ";
+            this.label2.Text = "Total amount of events: ";
             // 
             // eventsView
             // 
@@ -115,7 +115,7 @@ namespace Events_Viewer
             this.newEventBtn.ForeColor = System.Drawing.SystemColors.Window;
             this.newEventBtn.Location = new System.Drawing.Point(651, 125);
             this.newEventBtn.Name = "newEventBtn";
-            this.newEventBtn.Size = new System.Drawing.Size(187, 50);
+            this.newEventBtn.Size = new System.Drawing.Size(211, 50);
             this.newEventBtn.TabIndex = 6;
             this.newEventBtn.Text = "New Event";
             this.newEventBtn.UseVisualStyleBackColor = false;
@@ -189,6 +189,7 @@ namespace Events_Viewer
             this.Controls.Add(this.label5);
             this.Controls.Add(this.NextBtn);
             this.Controls.Add(this.PrevBtn);
+            this.ClientSize = new System.Drawing.Size(935, 605);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.newEventBtn);
