@@ -64,7 +64,7 @@ namespace Events_Viewer
             // 
             this.eventsCount.AutoSize = true;
             this.eventsCount.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.eventsCount.Location = new System.Drawing.Point(860, 191);
+            this.eventsCount.Location = new System.Drawing.Point(381, 96);
             this.eventsCount.Name = "eventsCount";
             this.eventsCount.Size = new System.Drawing.Size(59, 25);
             this.eventsCount.TabIndex = 1;
@@ -74,11 +74,11 @@ namespace Events_Viewer
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(651, 191);
+            this.label2.Location = new System.Drawing.Point(259, 96);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(203, 25);
+            this.label2.Size = new System.Drawing.Size(125, 25);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Total amount of events: ";
+            this.label2.Text = "Total amount: ";
             // 
             // eventsView
             // 
@@ -87,11 +87,11 @@ namespace Events_Viewer
             this.eventsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.eventsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.view});
-            this.eventsView.Location = new System.Drawing.Point(50, 70);
+            this.eventsView.Location = new System.Drawing.Point(54, 207);
             this.eventsView.Name = "eventsView";
             this.eventsView.ReadOnly = true;
             this.eventsView.RowTemplate.Height = 25;
-            this.eventsView.Size = new System.Drawing.Size(561, 460);
+            this.eventsView.Size = new System.Drawing.Size(561, 391);
             this.eventsView.TabIndex = 4;
             this.eventsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventsView_CellContentClick);
             // 
@@ -107,12 +107,12 @@ namespace Events_Viewer
             // EventJournalName
             // 
             this.EventJournalName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.EventJournalName.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EventJournalName.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EventJournalName.FormattingEnabled = true;
             this.EventJournalName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.EventJournalName.Location = new System.Drawing.Point(709, 70);
+            this.EventJournalName.Location = new System.Drawing.Point(108, 158);
             this.EventJournalName.Name = "EventJournalName";
-            this.EventJournalName.Size = new System.Drawing.Size(210, 31);
+            this.EventJournalName.Size = new System.Drawing.Size(105, 28);
             this.EventJournalName.TabIndex = 5;
             this.EventJournalName.SelectedIndexChanged += new System.EventHandler(this.EventJournalName_SelectedIndexChanged);
             // 
@@ -121,9 +121,9 @@ namespace Events_Viewer
             this.newEventBtn.BackColor = System.Drawing.Color.LightSeaGreen;
             this.newEventBtn.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.newEventBtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.newEventBtn.Location = new System.Drawing.Point(651, 125);
+            this.newEventBtn.Location = new System.Drawing.Point(50, 85);
             this.newEventBtn.Name = "newEventBtn";
-            this.newEventBtn.Size = new System.Drawing.Size(268, 50);
+            this.newEventBtn.Size = new System.Drawing.Size(165, 44);
             this.newEventBtn.TabIndex = 6;
             this.newEventBtn.Text = "New Event";
             this.newEventBtn.UseVisualStyleBackColor = false;
@@ -133,7 +133,7 @@ namespace Events_Viewer
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(651, 73);
+            this.label3.Location = new System.Drawing.Point(50, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 25);
             this.label3.TabIndex = 7;
@@ -152,7 +152,7 @@ namespace Events_Viewer
             // 
             // PrevBtn
             // 
-            this.PrevBtn.Location = new System.Drawing.Point(762, 287);
+            this.PrevBtn.Location = new System.Drawing.Point(162, 625);
             this.PrevBtn.Name = "PrevBtn";
             this.PrevBtn.Size = new System.Drawing.Size(75, 23);
             this.PrevBtn.TabIndex = 9;
@@ -162,7 +162,7 @@ namespace Events_Viewer
             // 
             // NextBtn
             // 
-            this.NextBtn.Location = new System.Drawing.Point(843, 287);
+            this.NextBtn.Location = new System.Drawing.Point(243, 625);
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.Size = new System.Drawing.Size(75, 23);
             this.NextBtn.TabIndex = 10;
@@ -173,7 +173,7 @@ namespace Events_Viewer
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(654, 291);
+            this.label5.Location = new System.Drawing.Point(54, 629);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 15);
             this.label5.TabIndex = 11;
@@ -182,7 +182,7 @@ namespace Events_Viewer
             // PageNum
             // 
             this.PageNum.AutoSize = true;
-            this.PageNum.Location = new System.Drawing.Point(739, 291);
+            this.PageNum.Location = new System.Drawing.Point(139, 629);
             this.PageNum.Name = "PageNum";
             this.PageNum.Size = new System.Drawing.Size(13, 15);
             this.PageNum.TabIndex = 12;
@@ -195,7 +195,7 @@ namespace Events_Viewer
             0,
             0,
             0});
-            this.TakeView.Location = new System.Drawing.Point(732, 338);
+            this.TakeView.Location = new System.Drawing.Point(268, 161);
             this.TakeView.Maximum = new decimal(new int[] {
             2500,
             0,
@@ -219,7 +219,7 @@ namespace Events_Viewer
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(654, 340);
+            this.label6.Location = new System.Drawing.Point(232, 163);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 15);
             this.label6.TabIndex = 14;
@@ -229,7 +229,7 @@ namespace Events_Viewer
             // 
             this.StartView.AutoSize = true;
             this.StartView.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.StartView.Location = new System.Drawing.Point(695, 393);
+            this.StartView.Location = new System.Drawing.Point(431, 625);
             this.StartView.Name = "StartView";
             this.StartView.Size = new System.Drawing.Size(38, 15);
             this.StartView.TabIndex = 15;
@@ -238,7 +238,7 @@ namespace Events_Viewer
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(654, 393);
+            this.label8.Location = new System.Drawing.Point(390, 625);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 15);
             this.label8.TabIndex = 16;
@@ -247,7 +247,7 @@ namespace Events_Viewer
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(798, 393);
+            this.label9.Location = new System.Drawing.Point(534, 625);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 15);
             this.label9.TabIndex = 17;
@@ -257,7 +257,7 @@ namespace Events_Viewer
             // 
             this.EndView.AutoSize = true;
             this.EndView.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.EndView.Location = new System.Drawing.Point(826, 393);
+            this.EndView.Location = new System.Drawing.Point(562, 625);
             this.EndView.Name = "EndView";
             this.EndView.Size = new System.Drawing.Size(44, 15);
             this.EndView.TabIndex = 18;
@@ -266,7 +266,7 @@ namespace Events_Viewer
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(762, 393);
+            this.label11.Location = new System.Drawing.Point(498, 625);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(17, 15);
             this.label11.TabIndex = 19;
@@ -276,7 +276,7 @@ namespace Events_Viewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 687);
+            this.ClientSize = new System.Drawing.Size(669, 678);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.EndView);
             this.Controls.Add(this.label9);

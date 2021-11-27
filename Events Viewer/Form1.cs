@@ -169,5 +169,7 @@ namespace Events_Viewer
             this.refreshMaxPage();
             this.refreshRows();
         }
+
+
     }
 }
