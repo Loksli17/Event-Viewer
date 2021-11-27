@@ -43,9 +43,9 @@ namespace Events_Viewer
             var type = (EventType)typeComboBox.SelectedItem;
 
             // This should add an event
-            // EventAdapter.addEventLogEntry(source, message, (EventLogEntryType)type.Value);
+            EventAdapter.addEventLogEntry(source, message, (EventLogEntryType) type.Value);
+            MessageBox.Show($"New with source: {source} was created! =)");
 
-            MessageBox.Show($"{source}, {message}, {type.Value}: {type.Name}", "OK");
         }
     }
 }

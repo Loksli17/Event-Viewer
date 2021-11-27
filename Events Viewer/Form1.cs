@@ -16,19 +16,22 @@ namespace Events_Viewer
     public partial class Form1 : Form
     {
 
-        private EventAdapter eventAdapter  = new EventAdapter();
-        public static int globalEventIndex = 0;
-        private int page                   = 1;
-        private int take                   = 500;
-        private int lastPage                = 0;
-        private int skip                   = 0;
-        private bool firstRefresh          = false;
+        private       EventAdapter  eventAdapter     = new EventAdapter();
+        public static int           globalEventIndex = 0;
+        public static EventLogEntry globalEvent      = null;
+
+        private int page          = 1;
+        private int take          = 500;
+        private int lastPage      = 0;
+        private int skip          = 0;
+        private bool firstRefresh = false;
 
         private List<string> eventJournalNames = new List<string> {
             "System",
             "Application",
             "Security",
         };
+
 
         public Form1()
         {
@@ -50,10 +53,10 @@ namespace Events_Viewer
         private void initColumns() {
 
             string[][] columns = { 
-                new string[] { "index",         "Index" },
-                new string[] { "id",            "Id" },
-                new string[] { "timeGenerated", "Time Generated" },
-                new string[] { "type",          "Type" },
+                new string[] { "index",  "Index" },
+                new string[] { "id",     "Id" },
+                new string[] { "source", "Source" },
+                new string[] { "type",   "Type" },
             };
 
             for(int i = 0; i < columns.Length; i++){
@@ -70,6 +73,7 @@ namespace Events_Viewer
             this.skip = (this.page - 1) * this.take;
         }
 
+
         private void pushRowsInGridView(EventLogEntryCollection events) {
 
             int start = this.eventAdapter.getCount() - 1 - this.skip;
@@ -81,9 +85,10 @@ namespace Events_Viewer
             this.EndView.Text   = end.ToString();
 
             for (int i = start; i > end; i--){
-                this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].TimeGenerated, events[i].EntryType);
+                this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].Source, events[i].EntryType);
             }
         }
+
 
         private void initDropDown()
         {
@@ -103,12 +108,14 @@ namespace Events_Viewer
             int rowInd     = e.RowIndex;
             int eventIndex = int.Parse(this.eventsView.Rows[rowInd].Cells[0].Value.ToString());
 
-            // hope this works
-            globalEventIndex = eventIndex;
+            globalEvent       = this.eventAdapter.getEvents()[eventIndex];
+            globalEventIndex  = eventIndex;
+
             EventView evtView = new EventView();
             evtView.ShowDialog(this);
             evtView.Dispose();
         }
+
 
         private void refreshRows()
         {
@@ -125,6 +132,7 @@ namespace Events_Viewer
             this.eventsCount.Text = this.eventAdapter.getCount().ToString();
         }
 
+
         private void EventJournalName_SelectedIndexChanged(object sender, EventArgs e)
         {        
             eventAdapter.setLogType(eventJournalNames[EventJournalName.SelectedIndex]);
@@ -135,15 +143,15 @@ namespace Events_Viewer
             refreshRows();
         }
 
+
         private void newEventBtn_Click(object sender, EventArgs e)
         {
             EventCreate evtCreate = new EventCreate();
             evtCreate.ShowDialog(this);
             evtCreate.Dispose();
 
-            // ! update event list here
-            // refreshRows()
         }
+
 
         private void PrevBtn_Click(object sender, EventArgs e)
         {
@@ -153,6 +161,7 @@ namespace Events_Viewer
             this.countSkip();
             this.refreshRows();
         }
+
 
         private void NextBtn_Click(object sender, EventArgs e)
         {

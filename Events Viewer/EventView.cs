@@ -18,12 +18,12 @@ namespace Events_Viewer
         {
             InitializeComponent();
 
-            this.Message.Text       = this.eventAdapter.getEvents()[Form1.globalEventIndex].Message;
-            this.InstanceId.Text    = this.eventAdapter.getEvents()[Form1.globalEventIndex].InstanceId.ToString();
+            this.Message.Text       = Form1.globalEvent.Message;
+            this.InstanceId.Text    = Form1.globalEvent.InstanceId.ToString();
             this.Index.Text         = Form1.globalEventIndex.ToString();
-            this.Type.Text          = this.eventAdapter.getEvents()[Form1.globalEventIndex].EntryType.ToString();
-            this.GeneratedTime.Text = this.eventAdapter.getEvents()[Form1.globalEventIndex].TimeGenerated.ToString();
-            this.Source.Text        = this.eventAdapter.getEvents()[Form1.globalEventIndex].Source;
+            this.Type.Text          = Form1.globalEvent.EntryType.ToString();
+            this.GeneratedTime.Text = Form1.globalEvent.TimeGenerated.ToString();
+            this.Source.Text        = Form1.globalEvent.Source;
         }
 
     }
