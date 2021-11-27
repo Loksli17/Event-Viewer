@@ -6,6 +6,13 @@ using System.Diagnostics;
 
 namespace Events_Viewer
 {
+    public struct EventType
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+    }
+
+
     public class EventAdapter
     {
 
@@ -36,7 +43,7 @@ namespace Events_Viewer
             eventLog.Log = type;
         }
 
-        public void addEventLogEntry(string source, string message, EventLogEntryType type)
+        public static void addEventLogEntry(string source, string message, EventLogEntryType type)
         {
             EventLog.WriteEntry(source, message, type);
         }

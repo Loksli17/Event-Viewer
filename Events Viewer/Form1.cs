@@ -126,6 +126,7 @@ namespace Events_Viewer
             evtCreate.Dispose();
 
             // ! update event list here
+            // refreshRows()
         }
 
 
