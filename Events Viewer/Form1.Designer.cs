@@ -38,6 +38,10 @@ namespace Events_Viewer
             this.newEventBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.PrevBtn = new System.Windows.Forms.Button();
+            this.NextBtn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.PageNum = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eventsView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +83,7 @@ namespace Events_Viewer
             this.eventsView.Name = "eventsView";
             this.eventsView.ReadOnly = true;
             this.eventsView.RowTemplate.Height = 25;
-            this.eventsView.Size = new System.Drawing.Size(559, 460);
+            this.eventsView.Size = new System.Drawing.Size(561, 460);
             this.eventsView.TabIndex = 4;
             this.eventsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventsView_CellContentClick);
             // 
@@ -138,11 +142,53 @@ namespace Events_Viewer
             this.label4.TabIndex = 8;
             this.label4.Text = "Event Viewer";
             // 
+            // PrevBtn
+            // 
+            this.PrevBtn.Location = new System.Drawing.Point(651, 299);
+            this.PrevBtn.Name = "PrevBtn";
+            this.PrevBtn.Size = new System.Drawing.Size(75, 23);
+            this.PrevBtn.TabIndex = 9;
+            this.PrevBtn.Text = "<< Prev";
+            this.PrevBtn.UseVisualStyleBackColor = true;
+            this.PrevBtn.Click += new System.EventHandler(this.PrevBtn_Click);
+            // 
+            // NextBtn
+            // 
+            this.NextBtn.Location = new System.Drawing.Point(732, 299);
+            this.NextBtn.Name = "NextBtn";
+            this.NextBtn.Size = new System.Drawing.Size(75, 23);
+            this.NextBtn.TabIndex = 10;
+            this.NextBtn.Text = "Next >>";
+            this.NextBtn.UseVisualStyleBackColor = true;
+            this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(655, 260);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 15);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Current page:";
+            // 
+            // PageNum
+            // 
+            this.PageNum.AutoSize = true;
+            this.PageNum.Location = new System.Drawing.Point(740, 260);
+            this.PageNum.Name = "PageNum";
+            this.PageNum.Size = new System.Drawing.Size(13, 15);
+            this.PageNum.TabIndex = 12;
+            this.PageNum.Text = "1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 605);
+            this.Controls.Add(this.PageNum);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.NextBtn);
+            this.Controls.Add(this.PrevBtn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.newEventBtn);
@@ -170,6 +216,10 @@ namespace Events_Viewer
         private System.Windows.Forms.DataGridViewButtonColumn view;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button PrevBtn;
+        private System.Windows.Forms.Button NextBtn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label PageNum;
     }
 }
 
