@@ -19,7 +19,7 @@ namespace Events_Viewer
         private EventAdapter eventAdapter  = new EventAdapter();
         public static int globalEventIndex = 0;
         private int page                   = 1;
-        private int take                   = 1000;
+        private int take                   = 500;
         private int lastPage                = 0;
         private int skip                   = 0;
         private bool firstRefresh          = false;
@@ -43,7 +43,7 @@ namespace Events_Viewer
 
 
         private void refreshMaxPage() {
-            this.lastPage = this.eventAdapter.getCount() / this.take;
+            this.lastPage = this.eventAdapter.getCount() / this.take + 1;
         } 
 
 
@@ -74,6 +74,11 @@ namespace Events_Viewer
 
             int start = this.eventAdapter.getCount() - 1 - this.skip;
             int end   = this.eventAdapter.getCount() - 1 - this.take - this.skip;
+
+            if (end < 0) end = 0;
+
+            this.StartView.Text = start.ToString();
+            this.EndView.Text   = end.ToString();
 
             for (int i = start; i > end; i--){
                 this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].TimeGenerated, events[i].EntryType);
@@ -154,6 +159,14 @@ namespace Events_Viewer
             this.page++;
             this.PageNum.Text = this.page.ToString();
             this.countSkip();
+            this.refreshRows();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            this.take = (int) this.TakeView.Value;
+            this.countSkip();
+            this.refreshMaxPage();
             this.refreshRows();
         }
     }
