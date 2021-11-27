@@ -16,10 +16,11 @@ namespace Events_Viewer
     public partial class Form1 : Form
     {
 
-        private EventAdapter eventAdapter = new EventAdapter();
+        private EventAdapter eventAdapter  = new EventAdapter();
         public static int globalEventIndex = 0;
         private int page                   = 1;
-        private int take                   = 1000;
+        private int take                   = 500;
+        private int lastPage                = 0;
         private int skip                   = 0;
         private bool firstRefresh          = false;
 
@@ -33,11 +34,17 @@ namespace Events_Viewer
         {
             InitializeComponent();
             this.countSkip();
+            this.refreshMaxPage();
 
             this.initColumns();
             initDropDown();
             this.eventsCount.Text = Convert.ToString(eventAdapter.getCount());
         }
+
+
+        private void refreshMaxPage() {
+            this.lastPage = this.eventAdapter.getCount() / this.take + 1;
+        } 
 
 
         private void initColumns() {
@@ -67,6 +74,11 @@ namespace Events_Viewer
 
             int start = this.eventAdapter.getCount() - 1 - this.skip;
             int end   = this.eventAdapter.getCount() - 1 - this.take - this.skip;
+
+            if (end < 0) end = 0;
+
+            this.StartView.Text = start.ToString();
+            this.EndView.Text   = end.ToString();
 
             for (int i = start; i > end; i--){
                 this.eventsView.Rows.Add(i, events[i].InstanceId, events[i].TimeGenerated, events[i].EntryType);
@@ -114,8 +126,12 @@ namespace Events_Viewer
         }
 
         private void EventJournalName_SelectedIndexChanged(object sender, EventArgs e)
-        {           
+        {        
             eventAdapter.setLogType(eventJournalNames[EventJournalName.SelectedIndex]);
+            this.page = 1;
+            this.PageNum.Text = this.page.ToString();
+            this.countSkip();
+            this.refreshMaxPage();
             refreshRows();
         }
 
@@ -127,6 +143,32 @@ namespace Events_Viewer
 
             // ! update event list here
             // refreshRows()
+        }
+
+        private void PrevBtn_Click(object sender, EventArgs e)
+        {
+            if (this.page == 1) return;
+            this.page--;
+            this.PageNum.Text = this.page.ToString();
+            this.countSkip();
+            this.refreshRows();
+        }
+
+        private void NextBtn_Click(object sender, EventArgs e)
+        {
+            if (this.page == this.lastPage) return;
+            this.page++;
+            this.PageNum.Text = this.page.ToString();
+            this.countSkip();
+            this.refreshRows();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            this.take = (int) this.TakeView.Value;
+            this.countSkip();
+            this.refreshMaxPage();
+            this.refreshRows();
         }
 
 
